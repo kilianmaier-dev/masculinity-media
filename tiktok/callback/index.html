@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TikTok Login</title>
+</head>
+<body style="font-family:-apple-system,system-ui,sans-serif;background:#000;color:#fff;padding:40px">
+<p id="msg">Leite zurück zum Terminal ...</p>
+<script>
+  // Forwards TikTok's ?code=...&state=... to the local script (tiktok/post.py login)
+  const query = location.search;
+  if (query.includes("code=") || query.includes("error=")) {
+    location.replace("http://127.0.0.1:8765/callback" + query);
+  } else {
+    document.getElementById("msg").textContent = "Kein Login-Code in der URL.";
+  }
+</script>
+</body>
+</html>
